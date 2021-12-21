@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='resetmigrations',
-    version="0.0.4",
+    version="0.0.5",
     packages=find_packages(),
     email='jcmacielhenning@gmail.com',
     author='Juan Cruz Maciel Henning',
