@@ -1,0 +1,4 @@
+__pycache__/*
+resetmigrations.egg-info/*
+env/*
+.vscode/*
