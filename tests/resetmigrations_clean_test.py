@@ -9,10 +9,6 @@ CONST_SAMPLE_FILES_FROM_DIR_NAME = "sample-files"
 CONST_SAMPLE_FILES_TO_DIR_NAME = "tests\\sample-files"
 CONST_SAMPLE_FILES_TESTS_DIR_NAME = "tests"
 
-should_be_deleted = [
-
-]
-
 
 class ResetMigrationsCleanTest(unittest.TestCase):
 
@@ -34,7 +30,9 @@ class ResetMigrationsCleanTest(unittest.TestCase):
         print(self.scriptsDirectory)
         runner = CliRunner()
         result = runner.invoke(
-            resetmigrations, ['clean', '--path', self.scriptsDirectory])
+            resetmigrations,
+            ['clean', '--path', self.scriptsDirectory + "\\sample-files"]
+        )
         self.assertEqual(result.exit_code, 0)
 
 
