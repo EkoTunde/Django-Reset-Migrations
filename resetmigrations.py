@@ -54,7 +54,8 @@ def clean_dir(path):
         return
 
     # Get the name
-    cwd_name = cwd.split('\\')[-1]
+    cwd_name = os.path.basename(cwd)
+    # cwd_name = cwd.split('\\')[-1]
 
     if cwd_name in ["virtualenv", "venv", "env"]:
         print("This is a virtualenv, skipping...")
