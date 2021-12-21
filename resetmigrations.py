@@ -1,6 +1,13 @@
 import click
 import os
 import shutil
+from rich.traceback import install
+from rich import print
+from rich.console import Console
+
+console = Console()
+
+install()
 
 
 @click.group()
@@ -30,9 +37,11 @@ def clean(path: str = None):
         print("path is", path)
 
     try:
-        clean_dir(path)
+        message = "Cleaning migrations and pycaches"
+        with console.status(f"[bold green]{message}...\n"):
+            clean_dir(path)
     except Exception as e:
-        print("e", e)
+        click.echo(f"Failed: {e}")
 
 
 def clean_dir(path):
@@ -41,7 +50,7 @@ def clean_dir(path):
     Args:
         path (str): Specific top 'tree' path.
     """
-    print("Aproaching cleaning: ", path)
+    console.print(f"[bold red]Cleaning migrations and pycaches in {path}[bold red]")
 
     # Change to the directory provided
     os.chdir(path)
@@ -55,7 +64,6 @@ def clean_dir(path):
 
     # Get the name
     cwd_name = os.path.basename(cwd)
-    # cwd_name = cwd.split('\\')[-1]
 
     if cwd_name in ["virtualenv", "venv", "env"]:
         print("This is a virtualenv, skipping...")
@@ -67,7 +75,6 @@ def clean_dir(path):
         return
 
     for element in os.listdir():
-        print("element:'", element, "' of", os.listdir(), "@", cwd)
         # If the element is a directory, call the function recursively
         path_to_element = f'{cwd}\\{element}'
 
