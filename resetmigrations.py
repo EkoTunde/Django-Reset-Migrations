@@ -94,9 +94,9 @@ def clean_dir(path):
 resetmigrations.add_command(clean)
 
 
-def main():
-    clean_dir(os.path.dirname(os.path.abspath(__file__)))
+# def main():
+#     clean_dir(os.path.dirname(os.path.abspath(__file__)))
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
